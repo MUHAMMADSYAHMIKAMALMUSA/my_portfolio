@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Muhammad Syahmi Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Global Header & Navigation -->
+    <header class="global-header">
+        <div class="logo-container">
+            <span class="logo-text">Syahmi's Portfolio<span class="accent-dot">.</span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="game.html">Interactive Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-layout">
+        <section class="form-container-card">
+            <div class="form-header">
+                <h2>Get In Touch</h2>
+                <p>Please populate the form below to initiate a simulated front-end communication pipeline.</p>
+            </div>
+
+            <!-- Interactivity hooked via JavaScript onsubmit event -->
+            <form id="contactForm" novalidate>
+                
+                <!-- 1. Text Input (Full Name) -->
+                <div class="input-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="e.g. John Doe">
+                    <span class="error-msg" id="nameError"></span>
+                </div>
+
+                <!-- 2. Email Input -->
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="e.g. john@example.com">
+                    <span class="error-msg" id="emailError"></span>
+                </div>
+
+                <!-- 3. Password Input -->
+                <div class="input-group">
+                    <label for="password">Security Password</label>
+                    <input type="password" id="password" placeholder="Enter secure string token">
+                    <span class="error-msg" id="passwordError"></span>
+                </div>
+
+                <!-- 4. Date Input -->
+                <div class="input-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob">
+                    <span class="error-msg" id="dobError"></span>
+                </div>
+
+                <!-- 5. Radio Buttons (Gender) -->
+                <div class="input-group">
+                    <label>Gender Orientation</label>
+                    <div class="radio-flex-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Male"> Male
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Female"> Female
+                        </label>
+                    </div>
+                    <span class="error-msg" id="genderError"></span>
+                </div>
+
+                <!-- 6. File Upload Input -->
+                <div class="input-group">
+                    <label for="profileImage">Upload Identification Photo</label>
+                    <input type="file" id="profileImage" accept="image/*">
+                    <span class="error-msg" id="fileError"></span>
+                </div>
+
+                <!-- 7. Checkbox Input (Terms Compliance) -->
+                <div class="input-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms">
+                        I hereby acknowledge and agree to the simulated terms of processing.
+                    </label>
+                    <span class="error-msg" id="termsError"></span>
+                </div>
+
+                <!-- Action Submit Button Control -->
+                <button type="submit" class="submit-btn">Execute Transmission</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Global Footer Element -->
+    <footer class="global-footer">
+        <p>&copy; 2026 Muhammad Syahmi. Designed for DFI20433 Web Development Architecture.</p>
+    </footer>
+
+    <!-- Custom Mock-Submission Popup Modal Layout -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">&#10003;</div>
+            <h2>Submission Successful!</h2>
+            <p>Thank you. Your structured message payload has been successfully validated and intercepted via front-end simulation loops.</p>
+            <button type="button" onclick="closeModal()" class="close-modal-btn">Dismiss Anchor</button>
+        </div>
+    </div>
+
+    <!-- Script Injection -->
+    <script src="script.js"></script>
+</body>
+</html>

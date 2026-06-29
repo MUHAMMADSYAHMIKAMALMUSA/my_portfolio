@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Saya | Maze Runner Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-body"></body>
+
+    <header>
+        <div class="logo">Syahmi's Portfolio</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">contact</a></li>
+                <li><a href="game.html" class="active">Interactive</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="game-container">
+        <h1 class="page-title">"Code-the-Path" Robot Maze</h1>
+        <p class="subtitle"Help the IoT robot find its way out by writing logic instructions!</p>
+
+        <div class="game-layout">
+            <div class="maze-wrapper">
+                <div id="maze" class="maze-grid">
+                    </div>
+                <div class="game-status" id="gameStatus">Status: Ready to take orders.</div>
+            </div>
+
+            <div class="control-panel">
+                <h3>Control Panel (Code Box)</h3>
+                <p class="instruction-tips">
+                    Type the instructions below (one instruction per line):<br>
+                    <code>FORWARD</code> - Move 1 square forward<br>
+                    <code>LEFT</code> - Turn left<br>
+                    <code>RIGHT</code> - Turn right
+                </p>
+                
+                <textarea id="commandInput" placeholder="Contoh:&#10;FORWARD&#10;RIGHT&#10;FORWARD" rows="6"></textarea>
+                
+                <div class="button-group">
+                    <button id="runBtn" class="btn run-btn">▶️ Run Code</button>
+                    <button id="resetBtn" class="btn reset-btn">🔄 Reset</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 All Rights Reserved | Designed by Muhammad Syahmi</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
