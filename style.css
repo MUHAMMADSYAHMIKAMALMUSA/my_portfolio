@@ -727,75 +727,90 @@ footer, .global-footer {
     /* Mengaktifkan butang 3 bar pada mod mobile */
     .hamburger-menu {
         display: flex !important;
+        position: relative;
+        z-index: 100000 !important; /* Butang kekal di lapisan atas */
     }
 
-    /* 🛠️ DIKEMASKINI: Ditukar ke kedudukan mutlak (fixed/absolute) berasaskan piksel 
-       supaya tidak ditelan oleh gambar background ber-filter blur. */
+    /* 🛠️ DIKEMASKINI: Menjadi Side Drawer mengikut imej_bc999a.png */
     .nav-menu {
         position: fixed !important;
-        top: 60px; /* Jarak ketinggian tetap dari bawah bar navigasi */
-        left: 0;
-        width: 100%;
-        background-color: rgba(15, 23, 42, 0.98) !important; /* Gelap premium padu */
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border-color);
-        max-height: 0; /* Tertutup rapat secara lalai */
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        z-index: 99999 !important; /* Berada paling atas skrin telefon */
+        top: 0;
+        right: -100%; /* Tersorok di sebelah kanan skrin asal */
+        width: 50%;   /* Menutup separuh skrin seperti rujukan imej */
+        height: 100vh; /* Memenuhi ketinggian skrin penuh */
+        background-color: rgba(255, 255, 255, 0.98) !important; /* Warna latar cerah premium */
+        backdrop-filter: blur(10px);
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+        
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start;
+        padding-top: 100px !important; /* Jarak elemen teratas supaya seimbang */
+        
+        max-height: none !important; /* Tutup sistem max-height lama */
+        transition: right 0.4s ease-in-out !important; /* Animasi gelongsor lancar */
+        z-index: 99999 !important; 
     }
 
-    /* 🛠️ DIKEMASKINI: Memastikan keutamaan tinggi untuk membuka dropdown apabila dicetus JS */
+    /* 🛠️ DIKEMASKINI: Apabila dicetus JS, tolak masuk menu dari tepi kanan */
     .nav-menu.mobile-active {
-        max-height: 300px !important; 
+        right: 0 !important; 
     }
 
     header, .global-header {
-        flex-direction: row; /* Mengekalkan barisan logo dan hamburger sebaris */
+        flex-direction: row; 
         justify-content: space-between;
         padding: 15px 5%;
-        height: 60px; /* Menetapkan ketinggian tetap untuk keselarasan menu 'top' */
+        height: 70px; 
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: rgba(30, 41, 59, 0.7); /* Boleh diubahsuai ikut tema */
     }
 
-    /* Memaksa susunan menu menegak */
+    /* Susunan menu menegak */
     .nav-menu ul {
         flex-direction: column !important;
         width: 100%;
-        padding: 20px 0 !important;
+        padding: 0 !important;
     }
 
     .nav-menu ul li {
-        margin: 15px 0 !important;
+        margin: 18px 0 !important;
         text-align: center;
         width: 100%;
     }
 
     .nav-menu ul li a {
-        display: block !important;
-        font-size: 18px;
-        padding: 10px 0 !important;
+        display: inline-block !important;
+        font-size: 16px;
+        padding: 8px 0 !important;
         width: 100%;
-        color: var(--text-main) !important;
+        color: #6b7280 !important; /* Warna kelabu pudar seakan imej rujukan */
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s ease;
     }
     
+    /* Warna aksen merah jambu/pink cerah pada tab aktif/hover */
     .nav-menu ul li a:hover, 
     .nav-menu ul li a.active {
         border-bottom: none !important;
-        color: var(--primary-cyan) !important;
+        color: #db2777 !important; /* Warna Deep Pink premium */
+        font-weight: 600;
     }
 
-    /* Transformasi animasi 3 bar membentuk simbol 'X' ketika aktif */
+    /* Transformasi animasi 3 bar (Hamburger -> X) */
     .hamburger-menu.toggle-active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
-        background-color: var(--primary-cyan);
+        background-color: #db2777; /* Tukar warna X mengikut warna tema aktif */
     }
     .hamburger-menu.toggle-active .bar:nth-child(2) {
         opacity: 0;
     }
     .hamburger-menu.toggle-active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
-        background-color: var(--primary-cyan);
+        background-color: #db2777;
     }
 
     main, .main-layout {
