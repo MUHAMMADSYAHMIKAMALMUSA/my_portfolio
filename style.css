@@ -726,60 +726,63 @@ footer, .global-footer {
 @media (max-width: 768px) {
     /* Mengaktifkan butang 3 bar pada mod mobile */
     .hamburger-menu {
-        display: flex;
+        display: flex !important;
     }
 
-    /* Menukar posisi Nav Menu menjadi kotak dropdown overlay di bawah header */
-    .nav-menu, nav {
-        position: absolute;
-        top: 100%;
+    /* 🛠️ DIKEMASKINI: Ditukar ke kedudukan mutlak (fixed/absolute) berasaskan piksel 
+       supaya tidak ditelan oleh gambar background ber-filter blur. */
+    .nav-menu {
+        position: fixed !important;
+        top: 60px; /* Jarak ketinggian tetap dari bawah bar navigasi */
         left: 0;
         width: 100%;
-        background-color: rgba(30, 41, 59, 0.95);
-        backdrop-filter: blur(16px);
+        background-color: rgba(15, 23, 42, 0.98) !important; /* Gelap premium padu */
+        backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border-color);
-        max-height: 0; /* Menu ditutup secara lalai */
+        max-height: 0; /* Tertutup rapat secara lalai */
         overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        transition: max-height 0.4s ease-in-out !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 99999 !important; /* Berada paling atas skrin telefon */
     }
 
-    /* Kelas dinamik aktif apabila butang hamburger dipicu oleh JavaScript */
-    .nav-menu.mobile-active, nav.mobile-active {
-        max-height: 320px; /* Membuka ruang liputan menu dropdown */
+    /* 🛠️ DIKEMASKINI: Memastikan keutamaan tinggi untuk membuka dropdown apabila dicetus JS */
+    .nav-menu.mobile-active {
+        max-height: 300px !important; 
     }
 
     header, .global-header {
         flex-direction: row; /* Mengekalkan barisan logo dan hamburger sebaris */
         justify-content: space-between;
         padding: 15px 5%;
+        height: 60px; /* Menetapkan ketinggian tetap untuk keselarasan menu 'top' */
     }
 
-    nav ul, .nav-menu ul {
-        flex-direction: column;
+    /* Memaksa susunan menu menegak */
+    .nav-menu ul {
+        flex-direction: column !important;
         width: 100%;
-        padding: 15px 0;
+        padding: 20px 0 !important;
     }
 
-    nav ul li, .nav-menu ul li {
-        margin: 12px 0;
+    .nav-menu ul li {
+        margin: 15px 0 !important;
         text-align: center;
         width: 100%;
     }
 
-    nav ul li a, .nav-menu ul li a {
-        display: block;
+    .nav-menu ul li a {
+        display: block !important;
         font-size: 18px;
-        padding: 8px 0;
+        padding: 10px 0 !important;
         width: 100%;
+        color: var(--text-main) !important;
     }
     
-    nav ul li a:hover, 
-    nav ul li a.active,
-    .nav-menu ul li a:hover,
+    .nav-menu ul li a:hover, 
     .nav-menu ul li a.active {
-        border-bottom: none;
-        color: var(--primary-cyan);
+        border-bottom: none !important;
+        color: var(--primary-cyan) !important;
     }
 
     /* Transformasi animasi 3 bar membentuk simbol 'X' ketika aktif */
