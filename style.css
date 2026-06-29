@@ -1,17 +1,18 @@
 /* =========================================================================
-   1. PENETAPAN ASAS & VARIABLES (Excellent Color Harmony)
+   1. PENETAPAN ASAS & VARIABLES (Transparent Tech Glow Theme)
    ========================================================================= */
 :root {
-    /* 🎨 DIKEMASKINI: Ditukar sedikit terang daripada #0f172a supaya efek gradient tak tenggelam */
-    --bg-main: #0b0f19;          /* Latar belakang utama (Midnight Tech Blue) */
-    --bg-card: rgba(30, 41, 59, 0.45); /* Mengurangkan kepekatan kad supaya kesan latar belakang tembus */
-    --primary-cyan: #38bdf8;     /* Warna penegas utama (Electric Cyan) */
-    --primary-hover: #0284c7;    /* Warna hover butang */
-    --text-main: #f8fafc;        /* Teks utama (Off-White) */
-    --text-muted: #94a3b8;       /* Teks sekunder (Silver Slate) */
-    --border-color: rgba(51, 65, 85, 0.5); /* Menjadikan sempadan semi-lutsinar */
-    --error-red: #ef4444;        /* Warna ralat JavaScript */
-    --success-green: #10b981;    /* Warna kejayaan */
+    /* Menggunakan warna biru gelap malam (Midnight Tech Blue) asli, TIADA hitam pekat */
+    --bg-main: #020617;          
+    /* Kad dijadikan lutsinar premium (Glassmorphism) supaya corak belakang tembus */
+    --bg-card: rgba(15, 23, 42, 0.35); 
+    --primary-cyan: #38bdf8;     /* Electric Cyan */
+    --primary-hover: #0284c7;    
+    --text-main: #f8fafc;        
+    --text-muted: #94a3b8;       
+    --border-color: rgba(255, 255, 255, 0.08); /* Sempadan putih halus lutsinar */
+    --error-red: #ef4444;        
+    --success-green: #10b981;    
 }
 
 * {
@@ -21,13 +22,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 🖼️ DIKEMASKINI: Menaikkan kepekatan opacity gradient (0.15 -> 0.30) & menambah 3 lapisan cahaya neon */
+/* 🖼️ DIKEMASKINI: Membuang terus tompok hitam pekat, melebarkan sinaran lampu neon */
 body {
     background-color: var(--bg-main);
     background-image: 
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 85% 85%, rgba(2, 132, 199, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.85) 0%, #0b0f19 100%);
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(2, 132, 199, 0.3) 0%, transparent 60%);
     background-attachment: fixed;
     color: var(--text-main);
     display: flex;
@@ -39,7 +39,8 @@ body {
    2. HEADER & NAVIGASI (Clean & Consistent Layout)
    ========================================================================= */
 header, .global-header {
-    background-color: #1e293b;
+    background-color: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
@@ -48,7 +49,7 @@ header, .global-header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 header .logo, .logo-container {
@@ -96,7 +97,6 @@ main, .main-layout {
     padding: 40px 10%;
 }
 
-/* Pensejajaran khusus untuk kad contact agar sentiasa di tengah-tengah halaman */
 .main-layout {
     display: flex;
     flex-direction: column;
@@ -130,11 +130,11 @@ main, .main-layout {
     gap: 50px;
     margin-top: 20px;
     background-color: var(--bg-card);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .profile-frame {
@@ -179,7 +179,6 @@ main, .main-layout {
     margin-bottom: 30px;
 }
 
-/* BUTANG INTEGRASI (Consistent Accent) */
 .btn {
     display: inline-block;
     padding: 12px 28px;
@@ -205,7 +204,7 @@ main, .main-layout {
     width: 100%;
     border-collapse: collapse;
     background-color: var(--bg-card);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     overflow: hidden;
@@ -221,10 +220,9 @@ main, .main-layout {
     border-bottom: none;
 }
 
-/* Kolum Kiri: Tajuk Bahagian */
 .table-section-title {
     width: 25%;
-    background-color: rgba(15, 23, 42, 0.6);
+    background-color: rgba(15, 23, 42, 0.4);
     color: var(--primary-cyan);
     text-align: left;
     vertical-align: top;
@@ -234,7 +232,6 @@ main, .main-layout {
     border-right: 2px solid var(--primary-cyan);
 }
 
-/* Kolum Kanan: Kandungan Maklumat */
 .resume-table td {
     padding: 25px;
     vertical-align: top;
@@ -255,7 +252,6 @@ main, .main-layout {
     font-size: 16px;
 }
 
-/* Gaya Badge Kemahiran */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -291,10 +287,9 @@ main, .main-layout {
     width: 100%;
 }
 
-/* Penggabungan kelas lama (.form-card) dan kelas baru (.form-container-card) */
 .form-card, .form-container-card {
     background-color: var(--bg-card);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     padding: 40px;
     border-radius: 16px;
@@ -316,7 +311,6 @@ main, .main-layout {
     margin-bottom: 25px;
 }
 
-/* Penggabungan kelas lama (.form-group) dan kelas baru (.input-group) */
 .form-group, .input-group {
     margin-bottom: 22px;
     display: flex;
@@ -332,6 +326,7 @@ main, .main-layout {
     font-size: 14px;
 }
 
+/* 🛠️ DIKEMASKINI: Kotak input dibuang warna hitam pekat, diganti dengan putih lutsinar halus */
 .form-group input[type="text"], .input-group input[type="text"],
 .form-group input[type="email"], .input-group input[type="email"],
 .form-group input[type="password"], .input-group input[type="password"],
@@ -339,7 +334,7 @@ main, .main-layout {
 .form-group input[type="file"], .input-group input[type="file"] {
     width: 100%;
     padding: 12px 16px;
-    background-color: rgba(15, 23, 42, 0.8);
+    background-color: rgba(255, 255, 255, 0.04); 
     border: 1px solid var(--border-color);
     border-radius: 8px;
     color: var(--text-main);
@@ -409,25 +404,24 @@ main, .main-layout {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 23, 42, 0.85); /* Efek gelap belakang modal */
+    background-color: rgba(15, 23, 42, 0.85); 
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Sentiasa terapung di atas semua elemen */
+    z-index: 9999; 
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
 
-/* Mengaktifkan paparan popup menerusi kelas JS */
 .modal-overlay.active {
     opacity: 1;
     pointer-events: auto;
 }
 
 .modal-box {
-    background-color: #1e293b; /* Menyelaraskan dengan rona kad gelap premium */
+    background-color: #1e293b; 
     border: 1px solid var(--border-color);
     padding: 40px;
     border-radius: 16px;
@@ -507,7 +501,6 @@ main, .main-layout {
     margin-top: 10px;
 }
 
-/* Jaluran Garis Grid Animasi */
 .game-container::before {
     content: '';
     position: absolute;
@@ -580,9 +573,9 @@ main, .main-layout {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Panel Arahan */
 .control-panel {
     background-color: var(--bg-card);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     padding: 30px;
     border-radius: 12px;
@@ -653,7 +646,8 @@ main, .main-layout {
    8. FOOTER (Consistent Theme)
    ========================================================================= */
 footer, .global-footer {
-    background-color: #1e293b;
+    background-color: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
     border-top: 1px solid var(--border-color);
     color: var(--text-muted);
     text-align: center;
