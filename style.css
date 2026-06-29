@@ -2,10 +2,10 @@
    1. PENETAPAN ASAS & VARIABLES (Transparent Tech Glow Theme)
    ========================================================================= */
 :root {
-    /* Menggunakan warna biru gelap malam (Midnight Tech Blue) asli, TIADA hitam pekat */
+    /* Menggunakan warna biru gelap sebagai penyelamat jika gambar gagal dimuatkan */
     --bg-main: #020617;          
-    /* Kad dijadikan lutsinar premium (Glassmorphism) supaya corak belakang tembus */
-    --bg-card: rgba(15, 23, 42, 0.35); 
+    /* Kad dijadikan lutsinar premium (Glassmorphism) supaya GAMBAR belakang tembus */
+    --bg-card: rgba(15, 23, 42, 0.4); 
     --primary-cyan: #38bdf8;     /* Electric Cyan */
     --primary-hover: #0284c7;    
     --text-main: #f8fafc;        
@@ -22,17 +22,36 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 🖼️ DIKEMASKINI: Membuang terus tompok hitam pekat, melebarkan sinaran lampu neon */
+/* 🖼️ DIKEMASKINI: Ditambah lapisan ::before untuk efek gambar kabur tanpa kacau teks */
 body {
     background-color: var(--bg-main);
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.4) 0%, transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(2, 132, 199, 0.3) 0%, transparent 60%);
-    background-attachment: fixed;
     color: var(--text-main);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative; /* Penting untuk mudahkan lapisan belakang melekat */
+}
+
+/* Lapisan khas untuk gambar latar belakang + efek kabur (Teks depan takkan kabur) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Memanggil fail imej latar belakang anda */
+    background-image: url('https://th.bing.com/th/id/OIP.tbkE0PzEAufjEANTIgKbqQHaDt?w=346&h=174&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Mengawal tahap kekaburan dan kegelapan latar belakang */
+    filter: blur(8px); 
+    brightness: 0.5; 
+    
+    z-index: -1; /* Tolak gambar ke lapisan paling bawah sekali */
 }
 
 /* =========================================================================
@@ -326,7 +345,7 @@ main, .main-layout {
     font-size: 14px;
 }
 
-/* 🛠️ DIKEMASKINI: Kotak input dibuang warna hitam pekat, diganti dengan putih lutsinar halus */
+/* Kotak input menggunakan warna putih halus lutsinar supaya serasi dengan gambar latar */
 .form-group input[type="text"], .input-group input[type="text"],
 .form-group input[type="email"], .input-group input[type="email"],
 .form-group input[type="password"], .input-group input[type="password"],
