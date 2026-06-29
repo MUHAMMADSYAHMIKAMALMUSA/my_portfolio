@@ -264,17 +264,25 @@ document.addEventListener("DOMContentLoaded", function() {
 // 3. KAWALAN MENU HAMBURGER UTK MOBILE RESPONSIVE (Semua Halaman)
 // =========================================================================
 document.addEventListener("DOMContentLoaded", function () {
-    const hamburgerBtn = document.getElementById("hamburgerBtn");
-    const navMenu = document.getElementById("navMenu");
+    // 🛠️ DIKEMASKINI: Menggunakan querySelector supaya sepadan dengan Class (.) di dalam CSS
+    const hamburgerBtn = document.querySelector(".hamburger-menu");
+    const navMenu = document.querySelector(".nav-menu");
 
     if (hamburgerBtn && navMenu) {
         hamburgerBtn.addEventListener("click", function () {
-            // Membuka atau menutup senarai menu dropdown secara animasi
+            // Membuka atau menutup senarai menu dari tepi kanan secara animasi
             navMenu.classList.toggle("mobile-active");
             // Mengubah rupa butang 3 bar menjadi simbol 'X'
             hamburgerBtn.classList.toggle("toggle-active");
         });
 
-        // 🛠️ DIKEMASKINI: Blok kod klik navLinks lama yang menyekat penukaran halaman HTML TELAH DIBUANG sepenuhnya!
+        // 🛠️ TAMBAHAN: Automatik tutup side menu jika pengguna klik mana-mana pautan
+        const navLinks = navMenu.querySelectorAll("ul li a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", function() {
+                navMenu.classList.remove("mobile-active");
+                hamburgerBtn.classList.remove("toggle-active");
+            });
+        });
     }
 });
