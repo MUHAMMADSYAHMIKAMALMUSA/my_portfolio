@@ -155,6 +155,7 @@ function initMaze() {
         for (let c = 0; c < 4; c++) {
             const cell = document.createElement("div");
             cell.classList.add("cell");
+            
             // Menetapkan gaya reka bentuk CSS mengikut jenis petak grid
             if (mazeLayout[r][c] === 'W') cell.classList.add("wall");
             if (mazeLayout[r][c] === 'S') cell.classList.add("start");
@@ -162,7 +163,7 @@ function initMaze() {
 
             // Memeriksa posisi koordinat semasa robot melangkah
             if (r === robotRow && c === robotCol) {
-                // 🛠️ DIKEMASKINI: Ditukar ke bentuk huruf kecil supaya sepadan dengan nama class CSS (e.g., direction-up, direction-right)
+                // DIKEMASKINI: Ditukar ke bentuk huruf kecil supaya sepadan dengan nama class CSS (e.g., direction-up, direction-right)
                 const cssDirectionClass = `direction-${robotDir.toLowerCase()}`;
                 cell.innerHTML = `<span id="robot" class="robot ${cssDirectionClass}">🤖</span>`;
             } else if (mazeLayout[r][c] === 'F') {
@@ -256,4 +257,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (runBtn) runBtn.addEventListener("click", runCommands);
     if (resetBtn) resetBtn.addEventListener("click", resetGame);
+});
+
+
+// =========================================================================
+// 3. KAWALAN MENU HAMBURGER UTK MOBILE RESPONSIVE (Semua Halaman)
+// =========================================================================
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener("click", function () {
+            // Membuka atau menutup senarai menu dropdown secara animasi
+            navMenu.classList.toggle("mobile-active");
+            // Mengubah bentuk rupa bentuk butang 3 bar menjadi simbol 'X'
+            hamburgerBtn.classList.toggle("toggle-active");
+        });
+
+        // Menutup menu lungsur secara automatik apabila pengguna menekan mana-mana pautan menu
+        const navLinks = navMenu.querySelectorAll("a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("mobile-active");
+                hamburgerBtn.classList.remove("toggle-active");
+            });
+        });
+    }
 });
