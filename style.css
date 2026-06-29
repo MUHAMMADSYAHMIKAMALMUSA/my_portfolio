@@ -723,36 +723,48 @@ footer, .global-footer {
 /* =========================================================================
    9. RESPONSIVE DESIGN & HAMBURGER SYSTEM (Media Queries)
    ========================================================================= */
+/* =========================================================================
+   9. RESPONSIVE DESIGN & HAMBURGER SYSTEM (Media Queries)
+   ========================================================================= */
 @media (max-width: 768px) {
     /* Mengaktifkan butang 3 bar pada mod mobile */
     .hamburger-menu {
         display: flex !important;
         position: relative;
-        z-index: 100000 !important; /* Butang kekal di lapisan atas */
+        z-index: 100000 !important;
     }
 
-    /* 🛠️ DIKEMASKINI: Menjadi Side Drawer mengikut imej_bc999a.png */
+    /* 👑 DIKEMASKINI: Tukar warna bar asal jadi warna putih/cyan terang supaya nampak atas header gelap */
+    .hamburger-menu .bar {
+        background-color: var(--text-main) !important;
+    }
+
+    /* 👑 DIKEMASKINI: Latar belakang tukar jadi Biru Gelap Lutsinar (Glassmorphism) sepadan dengan tema */
     .nav-menu {
         position: fixed !important;
         top: 0;
-        right: -100%; /* Tersorok di sebelah kanan skrin asal */
-        width: 50%;   /* Menutup separuh skrin seperti rujukan imej */
-        height: 100vh; /* Memenuhi ketinggian skrin penuh */
-        background-color: rgba(255, 255, 255, 0.98) !important; /* Warna latar cerah premium */
-        backdrop-filter: blur(10px);
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+        right: -100%; 
+        width: 60%;   /* Lebar menu disesuaikan sikit biar ngam */
+        height: 100vh; 
+        
+        /* Menggunakan warna kad biru gelap dengan kesan kabur premium */
+        background-color: rgba(15, 23, 42, 0.95) !important; 
+        backdrop-filter: blur(16px);
+        border-left: 1px solid var(--border-color);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
         
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-start;
-        padding-top: 100px !important; /* Jarak elemen teratas supaya seimbang */
+        align-items: center; 
+        padding-top: 100px !important; 
         
-        max-height: none !important; /* Tutup sistem max-height lama */
-        transition: right 0.4s ease-in-out !important; /* Animasi gelongsor lancar */
+        max-height: none !important; 
+        transition: right 0.4s cubic-bezier(0.1, 0.76, 0.55, 0.94) !important; 
         z-index: 99999 !important; 
     }
 
-    /* 🛠️ DIKEMASKINI: Apabila dicetus JS, tolak masuk menu dari tepi kanan */
+    /* Apabila dicetus JS, tolak masuk menu dari tepi kanan */
     .nav-menu.mobile-active {
         right: 0 !important; 
     }
@@ -760,59 +772,66 @@ footer, .global-footer {
     header, .global-header {
         flex-direction: row; 
         justify-content: space-between;
+        align-items: center;
         padding: 15px 5%;
         height: 70px; 
         position: sticky;
         top: 0;
         z-index: 1000;
-        background-color: rgba(30, 41, 59, 0.7); /* Boleh diubahsuai ikut tema */
+        background-color: rgba(30, 41, 59, 0.7);
     }
 
     /* Susunan menu menegak */
     .nav-menu ul {
         flex-direction: column !important;
         width: 100%;
-        padding: 0 !important;
+        padding: 0 !important; 
+        margin: 0 !important;
+        list-style: none;
     }
 
     .nav-menu ul li {
-        margin: 18px 0 !important;
+        margin: 20px 0 !important;
         text-align: center;
         width: 100%;
+        margin-left: 0 !important; 
     }
 
+    /* 👑 DIKEMASKINI: Warna teks asal ditukar kepada warna kelabu biru pudar */
     .nav-menu ul li a {
-        display: inline-block !important;
-        font-size: 16px;
-        padding: 8px 0 !important;
+        display: block !important;
+        font-size: 18px;
+        padding: 10px 0 !important;
         width: 100%;
-        color: #6b7280 !important; /* Warna kelabu pudar seakan imej rujukan */
-        font-weight: 500;
+        color: var(--text-muted) !important; 
+        font-weight: 600;
         text-decoration: none;
-        transition: color 0.2s ease;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+        border-bottom: none !important; 
     }
     
-    /* Warna aksen merah jambu/pink cerah pada tab aktif/hover */
+    /* 👑 DIKEMASKINI: Warna pink ditukar kepada Electric Cyan dengan kesan neon glow untuk tab aktif/hover */
     .nav-menu ul li a:hover, 
     .nav-menu ul li a.active {
         border-bottom: none !important;
-        color: #db2777 !important; /* Warna Deep Pink premium */
-        font-weight: 600;
+        color: var(--primary-cyan) !important; 
+        text-shadow: 0 0 15px rgba(56, 189, 248, 0.6); /* Efek glow */
     }
 
-    /* Transformasi animasi 3 bar (Hamburger -> X) */
+    /* 👑 DIKEMASKINI: Transformasi butang 'X' bertukar ke warna Electric Cyan (Bukan lagi pink) */
     .hamburger-menu.toggle-active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
-        background-color: #db2777; /* Tukar warna X mengikut warna tema aktif */
+        background-color: var(--primary-cyan) !important; 
     }
     .hamburger-menu.toggle-active .bar:nth-child(2) {
-        opacity: 0;
+        opacity: 0 !important;
     }
     .hamburger-menu.toggle-active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
-        background-color: #db2777;
+        background-color: var(--primary-cyan) !important;
     }
 
+    /* Susunan komponen lain untuk paparan telefon */
     main, .main-layout {
         padding: 30px 5%;
     }
@@ -847,7 +866,6 @@ footer, .global-footer {
         max-width: 100%;
     }
 }
-
 /* --- ANIMASI KEYFRAMES --- */
 @keyframes techMove {
     0% { transform: translate(0, 0); }
