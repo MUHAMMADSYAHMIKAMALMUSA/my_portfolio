@@ -271,17 +271,10 @@ document.addEventListener("DOMContentLoaded", function () {
         hamburgerBtn.addEventListener("click", function () {
             // Membuka atau menutup senarai menu dropdown secara animasi
             navMenu.classList.toggle("mobile-active");
-            // Mengubah bentuk rupa bentuk butang 3 bar menjadi simbol 'X'
+            // Mengubah rupa butang 3 bar menjadi simbol 'X'
             hamburgerBtn.classList.toggle("toggle-active");
         });
 
-        // Menutup menu lungsur secara automatik apabila pengguna menekan mana-mana pautan menu
-        const navLinks = navMenu.querySelectorAll("a");
-        navLinks.forEach(link => {
-            link.addEventListener("click", function () {
-                navMenu.classList.remove("mobile-active");
-                hamburgerBtn.classList.remove("toggle-active");
-            });
-        });
+        // 🛠️ DIKEMASKINI: Blok kod klik navLinks lama yang menyekat penukaran halaman HTML TELAH DIBUANG sepenuhnya!
     }
 });
