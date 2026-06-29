@@ -155,7 +155,6 @@ function initMaze() {
         for (let c = 0; c < 4; c++) {
             const cell = document.createElement("div");
             cell.classList.add("cell");
-
             // Menetapkan gaya reka bentuk CSS mengikut jenis petak grid
             if (mazeLayout[r][c] === 'W') cell.classList.add("wall");
             if (mazeLayout[r][c] === 'S') cell.classList.add("start");
@@ -163,8 +162,9 @@ function initMaze() {
 
             // Memeriksa posisi koordinat semasa robot melangkah
             if (r === robotRow && c === robotCol) {
-                // Ikon robot 🤖 akan sentiasa dilukis mengikut posisinya tanpa ghaib
-                cell.innerHTML = `<span id="robot" class="robot ${robotDir}">🤖</span>`;
+                // 🛠️ DIKEMASKINI: Ditukar ke bentuk huruf kecil supaya sepadan dengan nama class CSS (e.g., direction-up, direction-right)
+                const cssDirectionClass = `direction-${robotDir.toLowerCase()}`;
+                cell.innerHTML = `<span id="robot" class="robot ${cssDirectionClass}">🤖</span>`;
             } else if (mazeLayout[r][c] === 'F') {
                 // Paparkan bendera di garisan penamat jika robot belum sampai
                 cell.innerHTML = '🏁';
