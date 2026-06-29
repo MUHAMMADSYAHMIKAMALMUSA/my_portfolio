@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Profile & Resume</title>
+    <title>Syahmi's Portfolio | Profile & Resume</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">Syahmi's Portfolio</div>
-        <nav>
+<header class="global-header">
+        <div class="logo-container">Syahmi's Portfolio<span class="accent-dot"></span></div>
+        
+        <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="profile.html" class="active">Profile</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="game.html">Interactive</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
