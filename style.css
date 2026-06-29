@@ -22,17 +22,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 🖼️ DIKEMASKINI: Ditambah lapisan ::before untuk efek gambar kabur tanpa kacau teks */
+/* Lapisan body */
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: relative; /* Penting untuk mudahkan lapisan belakang melekat */
+    position: relative;
 }
 
-/* Lapisan khas untuk gambar latar belakang + efek kabur (Teks depan takkan kabur) */
+/* Lapisan khas untuk gambar latar belakang + efek kabur */
 body::before {
     content: "";
     position: fixed;
@@ -40,18 +40,13 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* Memanggil fail imej latar belakang anda */
-    background-image: url('https://th.bing.com/th/id/OIP.tbkE0PzEAufjEANTIgKbqQHaDt?w=346&h=174&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3'); 
+    background-image: url('background.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    /* Mengawal tahap kekaburan dan kegelapan latar belakang */
     filter: blur(8px); 
     brightness: 0.5; 
-    
-    z-index: -1; /* Tolak gambar ke lapisan paling bawah sekali */
+    z-index: -1;
 }
 
 /* =========================================================================
@@ -345,7 +340,6 @@ main, .main-layout {
     font-size: 14px;
 }
 
-/* Kotak input menggunakan warna putih halus lutsinar supaya serasi dengan gambar latar */
 .form-group input[type="text"], .input-group input[type="text"],
 .form-group input[type="email"], .input-group input[type="email"],
 .form-group input[type="password"], .input-group input[type="password"],
@@ -576,9 +570,18 @@ main, .main-layout {
 .cell.start { background-color: rgba(56, 189, 248, 0.2); border: 2px dashed var(--primary-cyan); }
 .cell.end { background-color: rgba(16, 185, 129, 0.2); border: 2px dashed var(--success-green); }
 
+/* 🛠️ DIKEMASKINI: Ditambah transisi animasi supaya robot lancar berpusing dan bergerak */
 .robot {
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.4s, top 0.4s;
+    display: inline-block;
+    transform-origin: center;
 }
+
+/* 🌟 KELAS BARU: Untuk kesan pusingan visual robot mengikut kod arah */
+.robot.direction-up    { transform: rotate(0deg); }
+.robot.direction-right { transform: rotate(90deg); }
+.robot.direction-down  { transform: rotate(180deg); }
+.robot.direction-left  { transform: rotate(-90deg); }
 
 .game-status {
     margin-top: 20px;
