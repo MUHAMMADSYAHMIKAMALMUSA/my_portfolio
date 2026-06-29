@@ -22,17 +22,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Lapisan body */
+/* Lapisan body utama */
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: relative;
+    position: relative; /* Penting untuk lapisan belakang melekat */
 }
 
-/* Lapisan khas untuk gambar latar belakang + efek kabur */
+/* Lapisan khas untuk gambar latar belakang + efek kabur (Teks depan kekal tajam) */
 body::before {
     content: "";
     position: fixed;
@@ -40,13 +40,18 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('background.jpg'); 
+    
+    /* Memanggil fail imej latar belakang anda */
+    background-image: url('https://th.bing.com/th/id/OIP.tbkE0PzEAufjEANTIgKbqQHaDt?w=346&h=174&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
+    /* Mengawal tahap kekaburan dan kegelapan latar belakang */
     filter: blur(8px); 
     brightness: 0.5; 
-    z-index: -1;
+    
+    z-index: -1; /* Tolak gambar ke lapisan paling bawah sekali */
 }
 
 /* =========================================================================
@@ -570,14 +575,31 @@ main, .main-layout {
 .cell.start { background-color: rgba(56, 189, 248, 0.2); border: 2px dashed var(--primary-cyan); }
 .cell.end { background-color: rgba(16, 185, 129, 0.2); border: 2px dashed var(--success-green); }
 
-/* 🛠️ DIKEMASKINI: Ditambah transisi animasi supaya robot lancar berpusing dan bergerak */
+/* 🛠️ DIKEMASKINI: Ditambah transisi animasi dan indikator depan robot (Cara 1) */
 .robot {
+    position: relative;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.4s, top 0.4s;
     display: inline-block;
     transform-origin: center;
+    font-size: 28px;
 }
 
-/* 🌟 KELAS BARU: Untuk kesan pusingan visual robot mengikut kod arah */
+/* 🌟 KOD BAHARU CARA 1: Membina Lampu LED Penunjuk Merah Neon di bahagian hadapan kepala robot */
+.robot::after {
+    content: "";
+    position: absolute;
+    top: -2px;          /* Terletak betul-betul di bahagian atas 'muka' robot */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;         
+    height: 8px;
+    background-color: #ef4444; /* Warna Merah Menyala */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ef4444, 0 0 20px #ef4444; /* Efek kilauan neon */
+    z-index: 10;
+}
+
+/* Pusingan visual robot bersama lampu penunjuk mengikut arah kod */
 .robot.direction-up    { transform: rotate(0deg); }
 .robot.direction-right { transform: rotate(90deg); }
 .robot.direction-down  { transform: rotate(180deg); }
