@@ -108,6 +108,26 @@ nav ul li a.active,
     border-bottom: 2px solid var(--primary-cyan);
 }
 
+/* 🍔 BUTANG HAMBURGER - Disembunyikan secara lalai pada paparan PC / Window */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease-in-out;
+}
+
 /* =========================================================================
    3. KANDUNGAN UTAMA & TITLES
    ========================================================================= */
@@ -701,17 +721,78 @@ footer, .global-footer {
 }
 
 /* =========================================================================
-   9. RESPONSIVE DESIGN (Media Queries)
+   9. RESPONSIVE DESIGN & HAMBURGER SYSTEM (Media Queries)
    ========================================================================= */
 @media (max-width: 768px) {
+    /* Mengaktifkan butang 3 bar pada mod mobile */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Menukar posisi Nav Menu menjadi kotak dropdown overlay di bawah header */
+    .nav-menu, nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(30, 41, 59, 0.95);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border-color);
+        max-height: 0; /* Menu ditutup secara lalai */
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Kelas dinamik aktif apabila butang hamburger dipicu oleh JavaScript */
+    .nav-menu.mobile-active, nav.mobile-active {
+        max-height: 320px; /* Membuka ruang liputan menu dropdown */
+    }
+
     header, .global-header {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row; /* Mengekalkan barisan logo dan hamburger sebaris */
+        justify-content: space-between;
         padding: 15px 5%;
     }
 
+    nav ul, .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 15px 0;
+    }
+
     nav ul li, .nav-menu ul li {
-        margin: 0 12px;
+        margin: 12px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    nav ul li a, .nav-menu ul li a {
+        display: block;
+        font-size: 18px;
+        padding: 8px 0;
+        width: 100%;
+    }
+    
+    nav ul li a:hover, 
+    nav ul li a.active,
+    .nav-menu ul li a:hover,
+    .nav-menu ul li a.active {
+        border-bottom: none;
+        color: var(--primary-cyan);
+    }
+
+    /* Transformasi animasi 3 bar membentuk simbol 'X' ketika aktif */
+    .hamburger-menu.toggle-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--primary-cyan);
+    }
+    .hamburger-menu.toggle-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.toggle-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--primary-cyan);
     }
 
     main, .main-layout {
